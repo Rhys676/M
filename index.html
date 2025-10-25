@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Trebuchet MS", sans-serif;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+      height: 100vh;
+      position: relative;
+      background: radial-gradient(circle at 50% 20%, #1d3557 0%, #0b132b 100%);
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-top: 40px;
+      text-shadow: 3px 3px 8px #000;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 15px auto 30px;
+      line-height: 1.6;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    img.profile {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid #f4a261;
+      margin: 15px 0;
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .gallery img {
+      width: 150px;
+      height: 150px;
+      border-radius: 15px;
+      object-fit: cover;
+      border: 3px solid #e9c46a;
+      transition: transform 0.4s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.1);
+    }
+
+    ul {
+      list-style-type: circle;
+      padding: 0;
+      max-width: 400px;
+      margin: 0 auto 30px;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    a {
+      color: #f8f9d2;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #f4a261;
+    }
+
+    .social-links {
+      margin-top: 25px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 8px 12px;
+      padding: 10px 15px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .social-links a:hover {
+      background: rgba(244, 162, 97, 0.5);
+    }
+
+    .sky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -2;
+      background: radial-gradient(circle at 50% 30%, #1d3557, #0b132b);
+    }
+
+    .nebula {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, rgba(69, 123, 157, 0.4), transparent 60%),
+                  radial-gradient(circle at 70% 60%, rgba(244, 162, 97, 0.2), transparent 70%),
+                  radial-gradient(circle at 50% 80%, rgba(233, 196, 106, 0.3), transparent 60%);
+      filter: blur(80px);
+      animation: drift 60s linear infinite alternate;
+    }
+
+    @keyframes drift {
+      from { transform: translate(-10%, -10%) rotate(0deg); }
+      to { transform: translate(10%, 10%) rotate(10deg); }
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: twinkle 3s infinite ease-in-out;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .shooting-star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0;
+      box-shadow: 0 0 8px 3px rgba(255, 255, 200, 0.8);
+    }
+
+    .shooting-star::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120px;
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.9), rgba(255,255,255,0));
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+
+    @keyframes shoot {
+      0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(var(--angle));
+      }
+      10% { opacity: 1; }
+      100% {
+        opacity: 0;
+        transform: translate(var(--dx), var(--dy)) rotate(var(--angle));
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="sky">
+    <div class="nebula"></div>
+    <div class="stars"></div>
+  </div>
+
+  <h1>Welcome to My Portfolio</h1>
+
+   <img src="D:\MSI\acefc450-6b37-4a32-8be7-6683a148d006.jfif" alt="My Profile Picture" class="profile" />
+
+  <p>
+  Hey there! I'm someone who’s always curious and loves learning new things—whether 
+  it’s picking up a new hobby, exploring tech, or just figuring out how things work. 
+  I enjoy spending time doing what I love, like [Singing, Gaming, Listening to Kpop and Jpop, Watching Paranormal Activities, and Watching Kdrama and Jdrama], 
+  and I’m all about finding joy in the little things. I believe in being real, growing through experiences, and keeping life chill but meaningful.
+  </p>
+
+ 
+
+  <div class="gallery">
+    <img src="D:\387649401_664874465781582_2594165631197938281_n.jpg" alt="Artwork 1" />
+    <img src=d:\MSI\IMG_20251002_180841.jpg alt="Artwork 2" />
+    <img src="D:\MSI\IMG_20250909_155026.jpg" alt="Artwork 3" />
+  </div>
+
+  <h2>My Hobbies & Interests</h2>
+  <ul>
+    <li>Taking a Picture of Environment</li>
+    <li>Watching Dramas</li>
+    <li>Music and Entertainment</li>
+    <li>Exploring Nature</li>
+  </ul>
+
+  <p>
+    Here’s a website that inspires me:
+    <a href="https://medium.com/design-bootcamp/the-mindset-that-inspires-me-to-work-with-technology-07fecce3421b" target="_blank">The Mindset That Inspires Me to Work with Technology.</a>
+  </p>
+
+  <div class="social-links">
+    <h3>Connect with Me:</h3>
+    <a href=https://www.facebook.com/profile.php?id=100085666807697 target="_blank">Facebook</a>
+    <a href=https://www.youtube.com/@RhysPawns target="_blank">YouTube</a>
+  </div>
+
+  <script>
+    const starsContainer = document.querySelector('.stars');
+    for (let i = 0; i < 80; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.animationDelay = Math.random() * 3 + 's';
+      starsContainer.appendChild(s);
+    }
+
+    function createShootingStar() {
+      const star = document.createElement('div');
+      star.className = 'shooting-star';
+      starsContainer.appendChild(star);
+
+      const startLeft = Math.random() * 100;
+      const startTop = Math.random() * 25; 
+      const dx = (Math.random() < 0.5 ? 1 : -1) * (40 + Math.random() * 30);
+      const dy = 80 + Math.random() * 10;
+      const angle = dx > 0 ? 25 : -25;
+
+      star.style.top = startTop + '%';
+      star.style.left = startLeft + '%';
+      star.style.setProperty('--dx', dx + 'vw');
+      star.style.setProperty('--dy', dy + 'vh');
+      star.style.setProperty('--angle', angle + 'deg');
+
+      const duration = 1.5 + Math.random() * 0.5;
+      star.style.animation = `shoot ${duration}s linear forwards`; 
+
+      setTimeout(() => star.remove(), duration * 1000);
+    }
+
+    function meteorShower() {
+      const count = 3 + Math.floor(Math.random() * 4); 
+      for (let i = 0; i < count; i++) {
+        setTimeout(createShootingStar, i * (200 + Math.random() * 300)); 
+      }
+    }
+
+    setInterval(meteorShower, 5000);
+  </script>
+</body>
+</html>
